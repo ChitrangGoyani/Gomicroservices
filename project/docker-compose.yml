@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  broker-service:
+    build:
+      context: ./../broker
+      dockerfile: ./../broker/broker-service.dockerfile
+    restart: always
+    ports:
+      - "8080:80" # 8080 on localhost to docker container 80 - hit broker service on port 8080 from frontend
+    deploy:
+      mode: replicated
+      replicas: 1
